@@ -6,6 +6,7 @@ utama::utama(QWidget *parent)
     , ui(new Ui::utama)
 {
     ui->setupUi(this);
+    db.init_database("database_parkee");
 }
 
 utama::~utama()

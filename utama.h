@@ -2,6 +2,7 @@
 #define UTAMA_H
 
 #include <QMainWindow>
+#include "controller/database_cntrl.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class utama; }
@@ -17,5 +18,6 @@ public:
 
 private:
     Ui::utama *ui;
+    database_cntrl db;
 };
 #endif // UTAMA_H
