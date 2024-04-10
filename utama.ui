@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -46,6 +46,19 @@
              <string>Sub Judul</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <spacer name="horizontalSpacer_2">
@@ -86,15 +99,20 @@
                 <item>
                  <widget class="QLabel" name="label_5">
                   <property name="text">
-                   <string>Jenis Kendaraan</string>
+                   <string>Jenis Kendaraan (F8)</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox">
+                 <widget class="QComboBox" name="combo_kendaraan1">
                   <item>
                    <property name="text">
                     <string>Mobil [M]</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Motor [S]</string>
                    </property>
                   </item>
                  </widget>
@@ -200,9 +218,22 @@
              </layout>
             </item>
             <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="label_52">
               <property name="text">
-               <string>Submit Ticket as Finished</string>
+               <string>Submit Ticket</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -210,9 +241,9 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="button_ticket">
               <property name="text">
-               <string>Pay for Rp 0,00</string>
+               <string>Cetak Tiket</string>
               </property>
              </widget>
             </item>
@@ -255,6 +286,19 @@
              <string>Sub Judul</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <spacer name="horizontalSpacer_5">
@@ -352,15 +396,20 @@
                 <item>
                  <widget class="QLabel" name="label_31">
                   <property name="text">
-                   <string>Jenis Kendaraan</string>
+                   <string>Jenis Kendaraan (F8)</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_3">
+                 <widget class="QComboBox" name="combo_kendaraan2">
                   <item>
                    <property name="text">
                     <string>Mobil [M]</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Motor [S]</string>
                    </property>
                   </item>
                  </widget>
@@ -372,7 +421,7 @@
                 <item>
                  <widget class="QLabel" name="label_35">
                   <property name="text">
-                   <string>Metode Pembayaran</string>
+                   <string>Metode Pembayaran (F9)</string>
                   </property>
                  </widget>
                 </item>
@@ -403,7 +452,7 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_6">
                   <item>
-                   <widget class="QLineEdit" name="lineEdit"/>
+                   <widget class="QLineEdit" name="line_no_parking"/>
                   </item>
                   <item>
                    <widget class="QLabel" name="label_14">
@@ -426,7 +475,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_2"/>
+                 <widget class="QLineEdit" name="line_codevo"/>
                 </item>
                </layout>
               </item>
@@ -588,14 +637,14 @@
                 <item>
                  <widget class="QLabel" name="label_42">
                   <property name="text">
-                   <string> </string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_43">
                   <property name="text">
-                   <string> </string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -671,7 +720,7 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_29">
               <item>
-               <widget class="QLabel" name="label_48">
+               <widget class="QLabel" name="harga_total">
                 <property name="text">
                  <string>Rp 0,00</string>
                 </property>
@@ -681,7 +730,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_49">
+               <widget class="QLabel" name="durasi_parkir">
                 <property name="text">
                  <string>0day 0hour 0min</string>
                 </property>
@@ -695,6 +744,19 @@
            </layout>
           </item>
           <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QLabel" name="label_51">
             <property name="text">
              <string>Submit Ticket as Finished</string>
@@ -705,7 +767,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="button_pay">
             <property name="text">
              <string>Pay for Rp 0,00</string>
             </property>

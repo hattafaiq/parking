@@ -14,6 +14,8 @@ public:
     database_cntrl();
     void init_database(QString filename);
     int insert_default_cek_in(QString plat, QByteArray cam, int jenis_kendaraan,int num_parkir);
+    int insert_default_cek_out(int id_cek_in, QByteArray cam_out, QByteArray cam_out_face, QDateTime waktu, int price);
+    int cek_in_avaliablelity(int id_cek_in, QString plat, QDateTime *waktu, int *no_park);
 
 private:
     QSqlDatabase db;
