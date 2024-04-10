@@ -69,9 +69,15 @@ void database_cntrl::create_database(QString fileName)
 
 void database_cntrl::create_new_table(QSqlQuery *q, int driver)
 {
-     QString query;
      QString HRini = QDate::currentDate().toString("yyyyMMdd");
+     create_new_cek_in(q,driver);
+     create_new_cek_out(q,driver);
+}
+
+void database_cntrl::create_new_cek_in(QSqlQuery *q,int driver)
+{
     if(driver==1){
+        QString query;
         query = QString("select count(name) from sqlite_master where name = 'cek_in'");//.arg(HRini.toUtf8().data());
         int jml=0;
         qDebug("q = %s",query.toUtf8().data());
@@ -89,17 +95,63 @@ void database_cntrl::create_new_table(QSqlQuery *q, int driver)
         }
         q->clear();
         if (jml < 1){
-            QString buat = QString("create table cek_in (id integer PRIMARY KEY AUTOINCREMENT, \
-                                  waktu DATETIME default(strftime('%Y%m%d%H%M%S', 'now', 'localtime')), \
-                                  year DATETIME default(strftime('%Y', 'now', 'localtime')) , \
-                                  month DATETIME default(strftime('%m', 'now', 'localtime')), \
-                                  day DATETIME default(strftime('%d', 'now', 'localtime')), \
-                                  hour DATETIME default(strftime('%H', 'now', 'localtime')), \
-                                  minute DATETIME default(strftime('%M', 'now', 'localtime')), \
-                                  plat text, cam BLOB, jenis_kendaraan integer)");
+            QString buat = QString("CREATE TABLE IF NOT EXISTS cek_in (id integer PRIMARY KEY AUTOINCREMENT, \
+                                  plat varchar(128), cam BLOB, jenis_kendaraan integer, num_parking integer, \
+                                  waktu DATETIME default(strftime('%Y%m%d%H%M%S', 'now', 'localtime')))");
 
             q->prepare(buat);
             q->exec();
         }
+    }
+}
+
+void database_cntrl::create_new_cek_out(QSqlQuery *q, int driver)
+{
+    if(driver==1){
+        QString query;
+        query = QString("select count(name) from sqlite_master where name = 'cek_out'");//.arg(HRini.toUtf8().data());
+        int jml=0;
+        qDebug("q = %s",query.toUtf8().data());
+        q->prepare(query);
+        if(!q->exec())
+        {
+            qDebug("errorrr");
+        }
+        else {
+            qDebug("lanjutttt");
+            q->first();
+            jml = q->value(0).toInt();
+            qDebug() << "jumlahnya =  "<< q->value(0).toInt();
+
+        }
+        q->clear();
+        if (jml < 1){
+            QString buat = QString("CREATE TABLE IF NOT EXISTS cek_out (id integer PRIMARY KEY AUTOINCREMENT, \
+                                  id_cek_in integer, cam_out BLOB, cam_out_face BLOB, \
+                                  waktu DATETIME default(strftime('%Y%m%d%H%M%S', 'now', 'localtime')))");
+
+            q->prepare(buat);
+            q->exec();
+        }
+    }
+}
+
+int database_cntrl::insert_default_cek_in(QString plat, QByteArray cam, int jenis_kendaraan,int num_parkir)
+{
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO cek_in ( plat, cam, jenis_kendaraan, num_parking ) "
+              "VALUES (?, ?, ?, ?)");
+
+    query.addBindValue( plat );
+    query.addBindValue( cam );
+    query.addBindValue( jenis_kendaraan );
+    query.addBindValue( num_parkir );
+    if(!query.exec())
+    {
+        qDebug() << "ERROR "<< query.lastError().text();
+        return 0;
+    }
+    else{
+        return 1;
     }
 }

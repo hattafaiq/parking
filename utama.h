@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "controller/database_cntrl.h"
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class utama; }
